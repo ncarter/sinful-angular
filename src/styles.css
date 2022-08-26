@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: turquoise;
+}
+
+.nav {
+  width: 315px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.nav > ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: turquoise;
+  font-family: "Papyrus", fantasy;
+}
+
+ol > li {
+  float: left;
+}
+
+ol > li a {
+  display: block;
+  color: navy;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ol > li a:hover {
+  font-weight: bolder;
+}
+
+.active {
+  border-bottom: 1px solid navy;
+}
+
+h1 {
+  margin: 0;
+  padding: 10px;
+  font-family: "Papyrus", fantasy;
+  text-align: center;
+  font-size: 500%;
+  font-weight: bolder;
+}
+
+#header {
+  font-family: "Papyrus", fantasy;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+}
+
+#content {
+  text-align: center;
+}
