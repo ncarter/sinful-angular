@@ -1,6 +1,93 @@
-<div id="header">
-  <h1>Sinful Pastries</h1>
-</div>
-<div id="content">
-  We offer a wide range of baked goods at reasonable prices. Please contact the shop at <a href ="mailto:sinfulpastries@gmail.com">Email us!</a>
+<section class="hero" id="top">
+  <div class="hero-copy">
+    <p class="eyebrow">Carlisle, Iowa Cottage Bakery</p>
+    <h1>Bold flavors baked fresh for markets, vendor shows, and pre-orders.</h1>
+    <p>
+      Sinful Pastries creates cupcakes, dessert bars, no-bake bites, and seasonal favorites for
+      local pop-ups around the Carlisle area.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:sinfulpastries@gmail.com">Request a Quote</a>
+      <a class="btn btn-secondary" [href]="facebookSearchUrl" target="_blank" rel="noopener noreferrer">See Facebook Posts</a>
+    </div>
+  </div>
+
+  <aside class="hero-card" aria-label="Where to find us">
+    <h2>Where to Find Us</h2>
+    <ul>
+      <li>Farmers markets in and around Carlisle</li>
+      <li>Vendor fairs and seasonal craft shows</li>
+      <li>Pre-order pickups for birthdays and holidays</li>
+    </ul>
+    <a routerLink="/events">Browse Upcoming Events</a>
+  </aside>
+</section>
+
+<section class="menu" id="menu">
+  <div class="section-header">
+    <p class="eyebrow">Most Requested</p>
+    <h2>Custom Treat Menu</h2>
+  </div>
+
+  <div class="chips" role="tablist" aria-label="Menu categories">
+    <button
+      *ngFor="let category of categories"
+      type="button"
+      [class.active]="selectedCategory === category"
+      (click)="selectCategory(category)">
+      {{ category }}
+    </button>
+  </div>
+
+  <div class="product-grid">
+    <article class="product-card" *ngFor="let product of visibleProducts">
+      <p class="category">{{ product.category }}</p>
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="section-header">
+    <p class="eyebrow">Photo Highlights</p>
+    <h2>Recent baked goods from Sinful Pastries</h2>
+  </div>
+
+  <div class="gallery-grid">
+    <button class="photo-tile" type="button" *ngFor="let photo of galleryItems" (click)="openPhoto(photo)">
+      <img [src]="photo.imageUrl" [alt]="photo.title" loading="lazy" />
+      <span>{{ photo.title }}</span>
+    </button>
+  </div>
+
+  <p class="gallery-note">
+    For day-of market updates and additional photos, visit
+    <a [href]="facebookSearchUrl" target="_blank" rel="noopener noreferrer">Sinful Pastries on Facebook</a>.
+  </p>
+</section>
+
+<section class="faq" id="faq">
+  <div class="section-header">
+    <p class="eyebrow">Order Questions</p>
+    <h2>Frequently Asked Questions</h2>
+  </div>
+
+  <div class="faq-list">
+    <article *ngFor="let faq of faqs; let i = index" class="faq-item" [class.open]="faq.open">
+      <button type="button" (click)="toggleFaq(i)" [attr.aria-expanded]="faq.open">
+        <span>{{ faq.question }}</span>
+        <span class="marker" aria-hidden="true">{{ faq.open ? '-' : '+' }}</span>
+      </button>
+      <p *ngIf="faq.open">{{ faq.answer }}</p>
+    </article>
+  </div>
+</section>
+
+<div class="lightbox" *ngIf="selectedPhoto" (click)="closePhoto()" role="dialog" aria-modal="true" aria-label="Selected photo">
+  <figure (click)="$event.stopPropagation()">
+    <button type="button" class="close" (click)="closePhoto()" aria-label="Close photo">Close</button>
+    <img [src]="selectedPhoto.imageUrl" [alt]="selectedPhoto.title" />
+    <figcaption>{{ selectedPhoto.title }}</figcaption>
+  </figure>
 </div>

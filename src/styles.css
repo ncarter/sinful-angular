@@ -1,59 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Nunito', 'Segoe UI', sans-serif;
+  --brand-900: #50260f;
+  --brand-800: #6f3415;
+  --brand-700: #90561f;
+  --ink: #2f1a10;
+  --ink-soft: #5f4030;
+  --brand-gradient: linear-gradient(135deg, #a1471b 0%, #d1692b 42%, #ee8f4b 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
 body {
-  background-color: turquoise;
-}
-
-.nav {
-  width: 315px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 30px;
-}
-
-.nav > ol {
-  list-style-type: none;
   margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: turquoise;
-  font-family: "Papyrus", fantasy;
+  min-height: 100%;
 }
 
-ol > li {
-  float: left;
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% -5%, rgba(255, 200, 140, 0.45), transparent 40%),
+    radial-gradient(circle at 90% 5%, rgba(255, 180, 135, 0.35), transparent 42%),
+    linear-gradient(180deg, #fff6eb 0%, #fdeedb 100%);
 }
 
-ol > li a {
-  display: block;
-  color: navy;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
 }
 
-ol > li a:hover {
-  font-weight: bolder;
-}
-
-.active {
-  border-bottom: 1px solid navy;
-}
-
-h1 {
-  margin: 0;
-  padding: 10px;
-  font-family: "Papyrus", fantasy;
-  text-align: center;
-  font-size: 500%;
-  font-weight: bolder;
-}
-
-#header {
-  font-family: "Papyrus", fantasy;
-  font-weight: bold;
-  font-size: large;
-  text-align: center;
-}
-
-#content {
-  text-align: center;
+a {
+  color: var(--brand-800);
 }

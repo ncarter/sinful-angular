@@ -1,3 +1,89 @@
-#content {
-  text-align: left;
+:host {
+  display: grid;
+  gap: 1rem;
+}
+
+.events-hero,
+.event-controls,
+.event-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(88, 51, 27, 0.16);
+  border-radius: 1rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: 0.76rem;
+  color: var(--brand-700);
+}
+
+.events-hero h1 {
+  margin: 0.5rem 0;
+  font-size: clamp(1.55rem, 3vw, 2.3rem);
+}
+
+.events-hero p {
+  color: var(--ink-soft);
+}
+
+.events-hero a {
+  font-weight: 700;
+  color: var(--brand-800);
+}
+
+.event-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.event-controls button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  color: #fff;
+  background: var(--brand-gradient);
+  font-weight: 700;
+}
+
+.event-controls p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.8rem;
+}
+
+.event-date {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--brand-700);
+  font-weight: 700;
+}
+
+.event-card h2 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.event-meta {
+  margin: 0;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.event-card p {
+  margin-top: 0.6rem;
 }

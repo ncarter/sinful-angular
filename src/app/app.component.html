@@ -1,8 +1,30 @@
-<nav class="nav">
-  <ol>
-    <li><a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
-    <li><a routerLink="/cupcakes" routerLinkActive="active" ariaCurrentWhenActive="page">Cupcakes</a></li>
-    <li><a routerLink="/other" routerLinkActive="active" ariaCurrentWhenActive="page">Other Treats</a></li>
-  </ol>
-</nav>
-<router-outlet></router-outlet>
+<header class="site-header">
+  <a class="brand" routerLink="/">
+    <span class="brand-mark">SP</span>
+    <span class="brand-text">
+      <strong>Sinful Pastries</strong>
+      <small>Carlisle, Iowa</small>
+    </span>
+  </a>
+
+  <nav class="site-nav" aria-label="Primary">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/" fragment="menu">Menu</a>
+    <a routerLink="/" fragment="gallery">Photos</a>
+    <a routerLink="/events" routerLinkActive="active">Events</a>
+  </nav>
+</header>
+
+<main class="site-main">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="site-footer">
+  <p>Fresh-baked for markets, holidays, and everyday cravings.</p>
+  <p>
+    <a href="mailto:sinfulpastries&#64;gmail.com">sinfulpastries&#64;gmail.com</a>
+    <span aria-hidden="true">|</span>
+    <a href="https://www.facebook.com/search/top?q=sinful%20pastries" target="_blank" rel="noopener noreferrer">Facebook</a>
+  </p>
+  <small>Copyright {{ currentYear }} Sinful Pastries</small>
+</footer>

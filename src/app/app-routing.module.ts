@@ -1,19 +1,16 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {CupcakesComponent} from './cupcakes/cupcakes.component';
-import {OtherComponent} from "./other/other.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { OtherComponent } from './other/other.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'cupcakes', component: CupcakesComponent},
-  {path: 'other', component: OtherComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '', component: HomeComponent },
+  { path: 'events', component: OtherComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

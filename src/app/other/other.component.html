@@ -1,53 +1,35 @@
-<div id="header">
-  <h1>Other Treats</h1>
-</div>
-<div id="content">
-  Here at Sinful Pastries we understand that cake or cupcakes may not be what makes you drool, so we offer a wide variety of baked good and treats. We also offer holiday platters that include a variety
-  of items. <br/> <br/> Below is a list of some of the additional items we offer:
+<section class="events-hero">
+  <p class="eyebrow">Upcoming Markets</p>
+  <h1>Find Sinful Pastries at local vendor shows.</h1>
+  <p>
+    Event details can shift based on weather and organizer changes.
+    Follow Facebook for live updates and day-of menu posts.
+  </p>
+  <a href="https://www.facebook.com/search/top?q=sinful%20pastries" target="_blank" rel="noopener noreferrer">Open Facebook Updates</a>
+</section>
 
-  <ul>
-    <li>Fruit Bouquets </li>
-    <li>Chocolate Shapes </li>
-    <li>Cookie & Cream Balls </li>
-    <li>Cookie Dough Squares</li>
-    <li>Grasshopper Squares</li>
-    <li>Fudge</li>
-    <li>Brookies</li>
-    <li>Hot Cocoa Bombs</li>
-    <li>Smores Bark</li>
-    <li>Coconut & Almond Bark</li>
-    <li>Holiday Popcorn </li>
-    <li>A variety of covered pretzels</li>
-  </ul>
+<section class="event-controls">
+  <button type="button" (click)="togglePast()">
+    {{ showPast ? 'Hide Past Events' : 'Show Past Events' }}
+  </button>
+  <p>{{ filteredEvents.length }} listed {{ showPast ? 'total' : 'upcoming' }} event(s).</p>
+</section>
 
-  <div class="row" style="display:none;">
-    <div class="column">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-    </div>
-    <div class="column">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-    </div>
-    <div class="column">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-    </div>
-    <div class="column">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-      <img src="img/Comingsoon.jpeg">
-    </div>
-  </div>
-</div>
+<section class="event-list" *ngIf="filteredEvents.length; else noEvents">
+  <article class="event-card" *ngFor="let event of filteredEvents">
+    <p class="event-date">{{ formatDate(event.date) }}</p>
+    <h2>{{ event.title }}</h2>
+    <p class="event-meta">{{ event.time }}</p>
+    <p class="event-meta">{{ event.location }}</p>
+    <p>{{ event.notes }}</p>
+  </article>
+</section>
+
+<ng-template #noEvents>
+  <section class="event-list">
+    <article class="event-card">
+      <h2>No upcoming events listed right now.</h2>
+      <p>Please check Facebook for pop-up announcements and pre-order windows.</p>
+    </article>
+  </section>
+</ng-template>
