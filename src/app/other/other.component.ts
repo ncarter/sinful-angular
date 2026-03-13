@@ -9,9 +9,10 @@ interface BakeryEvent {
 }
 
 @Component({
-  selector: 'app-other',
-  templateUrl: './other.component.html',
-  styleUrls: ['./other.component.css']
+    selector: 'app-other',
+    templateUrl: './other.component.html',
+    styleUrls: ['./other.component.css'],
+    standalone: false
 })
 export class OtherComponent {
   showPast = false;
