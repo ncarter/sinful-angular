@@ -30,21 +30,24 @@
   </div>
 
   <div class="chips" role="tablist" aria-label="Menu categories">
-    <button
-      *ngFor="let category of categories"
-      type="button"
-      [class.active]="selectedCategory === category"
-      (click)="selectCategory(category)">
-      {{ category }}
-    </button>
+    @for (category of categories; track category) {
+      <button
+        type="button"
+        [class.active]="selectedCategory === category"
+        (click)="selectCategory(category)">
+        {{ category }}
+      </button>
+    }
   </div>
 
   <div class="product-grid">
-    <article class="product-card" *ngFor="let product of visibleProducts">
-      <p class="category">{{ product.category }}</p>
-      <h3>{{ product.name }}</h3>
-      <p>{{ product.description }}</p>
-    </article>
+    @for (product of visibleProducts; track product) {
+      <article class="product-card">
+        <p class="category">{{ product.category }}</p>
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+      </article>
+    }
   </div>
 </section>
 
@@ -55,10 +58,12 @@
   </div>
 
   <div class="gallery-grid">
-    <button class="photo-tile" type="button" *ngFor="let photo of galleryItems" (click)="openPhoto(photo)">
-      <img [src]="photo.imageUrl" [alt]="photo.title" loading="lazy" />
-      <span>{{ photo.title }}</span>
-    </button>
+    @for (photo of galleryItems; track photo) {
+      <button class="photo-tile" type="button" (click)="openPhoto(photo)">
+        <img [src]="photo.imageUrl" [alt]="photo.title" loading="lazy" />
+        <span>{{ photo.title }}</span>
+      </button>
+    }
   </div>
 
   <p class="gallery-note">
@@ -74,20 +79,26 @@
   </div>
 
   <div class="faq-list">
-    <article *ngFor="let faq of faqs; let i = index" class="faq-item" [class.open]="faq.open">
-      <button type="button" (click)="toggleFaq(i)" [attr.aria-expanded]="faq.open">
-        <span>{{ faq.question }}</span>
-        <span class="marker" aria-hidden="true">{{ faq.open ? '-' : '+' }}</span>
-      </button>
-      <p *ngIf="faq.open">{{ faq.answer }}</p>
-    </article>
+    @for (faq of faqs; track faq; let i = $index) {
+      <article class="faq-item" [class.open]="faq.open">
+        <button type="button" (click)="toggleFaq(i)" [attr.aria-expanded]="faq.open">
+          <span>{{ faq.question }}</span>
+          <span class="marker" aria-hidden="true">{{ faq.open ? '-' : '+' }}</span>
+        </button>
+        @if (faq.open) {
+          <p>{{ faq.answer }}</p>
+        }
+      </article>
+    }
   </div>
 </section>
 
-<div class="lightbox" *ngIf="selectedPhoto" (click)="closePhoto()" role="dialog" aria-modal="true" aria-label="Selected photo">
-  <figure (click)="$event.stopPropagation()">
-    <button type="button" class="close" (click)="closePhoto()" aria-label="Close photo">Close</button>
-    <img [src]="selectedPhoto.imageUrl" [alt]="selectedPhoto.title" />
-    <figcaption>{{ selectedPhoto.title }}</figcaption>
-  </figure>
-</div>
+@if (selectedPhoto) {
+  <div class="lightbox" (click)="closePhoto()" role="dialog" aria-modal="true" aria-label="Selected photo">
+    <figure (click)="$event.stopPropagation()">
+      <button type="button" class="close" (click)="closePhoto()" aria-label="Close photo">Close</button>
+      <img [src]="selectedPhoto.imageUrl" [alt]="selectedPhoto.title" />
+      <figcaption>{{ selectedPhoto.title }}</figcaption>
+    </figure>
+  </div>
+}

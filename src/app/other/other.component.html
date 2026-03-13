@@ -15,21 +15,24 @@
   <p>{{ filteredEvents.length }} listed {{ showPast ? 'total' : 'upcoming' }} event(s).</p>
 </section>
 
-<section class="event-list" *ngIf="filteredEvents.length; else noEvents">
-  <article class="event-card" *ngFor="let event of filteredEvents">
-    <p class="event-date">{{ formatDate(event.date) }}</p>
-    <h2>{{ event.title }}</h2>
-    <p class="event-meta">{{ event.time }}</p>
-    <p class="event-meta">{{ event.location }}</p>
-    <p>{{ event.notes }}</p>
-  </article>
-</section>
-
-<ng-template #noEvents>
+@if (filteredEvents.length) {
+  <section class="event-list">
+    @for (event of filteredEvents; track event) {
+      <article class="event-card">
+        <p class="event-date">{{ formatDate(event.date) }}</p>
+        <h2>{{ event.title }}</h2>
+        <p class="event-meta">{{ event.time }}</p>
+        <p class="event-meta">{{ event.location }}</p>
+        <p>{{ event.notes }}</p>
+      </article>
+    }
+  </section>
+} @else {
   <section class="event-list">
     <article class="event-card">
       <h2>No upcoming events listed right now.</h2>
       <p>Please check Facebook for pop-up announcements and pre-order windows.</p>
     </article>
   </section>
-</ng-template>
+}
+
